@@ -1,554 +1,314 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Para Amy ❤️</title>
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Para Amy ❤️</title>
 
-    :root {
-      --bg1: #120813;
-      --bg2: #26112a;
-      --bg3: #4d1f42;
-      --pink: #ff6fb5;
-      --paper: rgba(255, 250, 252, 0.97);
-      --text: #4d2b39;
-    }
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
 
-    body {
-      min-height: 100vh;
-      overflow: hidden;
-      font-family: Georgia, "Times New Roman", serif;
-      background: radial-gradient(circle at top, #5c214f 0%, var(--bg2) 30%, var(--bg1) 100%);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      position: relative;
-    }
+body{
+height:100vh;
+overflow:hidden;
+display:flex;
+justify-content:center;
+align-items:center;
+font-family:Georgia,serif;
+background:black;
+}
 
-    .stars, .hearts-bg {
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      overflow: hidden;
-    }
+/* intro pantalla negra */
+.intro{
+position:absolute;
+inset:0;
+background:black;
+display:flex;
+justify-content:center;
+align-items:center;
+z-index:999;
+flex-direction:column;
+transition:1s;
+}
 
-    .star {
-      position: absolute;
-      width: 2px;
-      height: 2px;
-      background: white;
-      border-radius: 50%;
-      opacity: 0.7;
-      animation: twinkle 3s infinite ease-in-out;
-    }
+.intro h1{
+color:white;
+font-size:32px;
+letter-spacing:2px;
+opacity:0;
+animation:fadeIn 2s forwards;
+}
 
-    @keyframes twinkle {
-      0%, 100% { opacity: 0.2; transform: scale(0.8); }
-      50% { opacity: 1; transform: scale(1.5); }
-    }
+@keyframes fadeIn{
+to{opacity:1;}
+}
 
-    .heart-float {
-      position: absolute;
-      width: 18px;
-      height: 18px;
-      background: rgba(255, 111, 181, 0.28);
-      transform: rotate(45deg);
-      animation: floatHeart linear forwards;
-      bottom: -30px;
-    }
+.intro.hide{
+opacity:0;
+pointer-events:none;
+}
 
-    .heart-float::before,
-    .heart-float::after {
-      content: "";
-      position: absolute;
-      width: 18px;
-      height: 18px;
-      background: rgba(255, 111, 181, 0.28);
-      border-radius: 50%;
-    }
+/* fondo estrellas */
+.stars{
+position:absolute;
+inset:0;
+overflow:hidden;
+}
 
-    .heart-float::before { top: -9px; left: 0; }
-    .heart-float::after { left: -9px; top: 0; }
+.star{
+position:absolute;
+width:2px;
+height:2px;
+background:white;
+border-radius:50%;
+animation:twinkle 3s infinite;
+}
 
-    @keyframes floatHeart {
-      0% { transform: translateY(0) rotate(45deg) scale(0.7); opacity: 0; }
-      10% { opacity: 1; }
-      100% { transform: translateY(-120vh) rotate(45deg) scale(1.3); opacity: 0; }
-    }
+@keyframes twinkle{
+0%,100%{opacity:.2}
+50%{opacity:1}
+}
 
-    .scene {
-      position: relative;
-      perspective: 1400px;
-      z-index: 2;
-    }
+/* sobre */
+.scene{
+position:relative;
+perspective:1200px;
+}
 
-    .wrapper {
-      position: relative;
-      width: 360px;
-      height: 250px;
-    }
+.wrapper{
+width:340px;
+height:240px;
+position:relative;
+}
 
-    .envelope {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(145deg, #ffd6e9, #f7b7d3);
-      border-radius: 16px;
-      box-shadow: 0 20px 50px rgba(0,0,0,0.35);
-      overflow: visible;
-    }
+.envelope{
+position:absolute;
+inset:0;
+background:#ffd6e9;
+border-radius:15px;
+box-shadow:0 20px 40px rgba(0,0,0,.4);
+}
 
-    .flap {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 125px;
-      background: linear-gradient(145deg, #ffb6d6, #ff9fcb);
-      clip-path: polygon(0 0, 50% 100%, 100% 0);
-      transform-origin: top center;
-      transition: transform 1.2s ease;
-      z-index: 6;
-    }
+.flap{
+position:absolute;
+width:100%;
+height:120px;
+background:#ffb6d6;
+clip-path:polygon(0 0,50% 100%,100% 0);
+transform-origin:top;
+transition:1s;
+z-index:5;
+}
 
-    .seal {
-      position: absolute;
-      left: 50%;
-      top: 100px;
-      transform: translateX(-50%);
-      width: 62px;
-      height: 62px;
-      border-radius: 50%;
-      background: radial-gradient(circle at top, #ffebf4, #ff70b5 60%, #d93c88);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 22px;
-      color: white;
-      box-shadow: 0 8px 18px rgba(0,0,0,0.25);
-      z-index: 7;
-      transition: all 0.7s ease;
-    }
+.seal{
+position:absolute;
+left:50%;
+top:95px;
+transform:translateX(-50%);
+width:60px;
+height:60px;
+border-radius:50%;
+background:#ff4fa3;
+display:flex;
+justify-content:center;
+align-items:center;
+color:white;
+font-size:24px;
+z-index:6;
+transition:.5s;
+}
 
-    .hint {
-      position: absolute;
-      bottom: 18px;
-      left: 50%;
-      transform: translateX(-50%);
-      color: #7d3159;
-      font-weight: bold;
-      letter-spacing: 1px;
-      font-size: 0.96rem;
-      text-align: center;
-      width: 100%;
-    }
+.letter{
+position:absolute;
+width:300px;
+height:520px;
+background:white;
+border-radius:20px;
+left:50%;
+top:20px;
+transform:translateX(-50%);
+padding:18px;
+box-shadow:0 15px 35px rgba(0,0,0,.3);
+opacity:0;
+transition:1.2s;
+overflow:auto;
+}
 
-    .letter {
-      position: absolute;
-      left: 50%;
-      top: 18px;
-      transform: translateX(-50%);
-      width: 320px;
-      height: 540px;
-      background: var(--paper);
-      border-radius: 22px;
-      padding: 18px 18px 22px;
-      box-shadow: 0 18px 45px rgba(0,0,0,0.28);
-      opacity: 0;
-      z-index: 2;
-      transition: top 1.2s ease, opacity 1.2s ease, transform 1.2s ease;
-      overflow: hidden;
-      border: 1px solid rgba(255,255,255,0.6);
-    }
+.photo{
+width:100%;
+height:180px;
+border-radius:15px;
+overflow:hidden;
+margin-bottom:10px;
+}
+.photo img{
+width:100%;
+height:100%;
+object-fit:cover;
+}
 
-    .letter-content {
-      height: 100%;
-      overflow-y: auto;
-      padding-right: 6px;
-    }
+.title{
+text-align:center;
+color:#c2185b;
+margin-bottom:10px;
+}
 
-    .letter-content::-webkit-scrollbar {
-      width: 7px;
-    }
+.counter{
+background:#ffe3f1;
+padding:10px;
+border-radius:12px;
+text-align:center;
+margin-bottom:10px;
+color:#7a2d52;
+font-weight:bold;
+}
 
-    .letter-content::-webkit-scrollbar-thumb {
-      background: #f0a9c9;
-      border-radius: 10px;
-    }
+.text{
+line-height:1.7;
+color:#4b2d38;
+text-align:justify;
+min-height:220px;
+}
 
-    .mini-title {
-      text-align: center;
-      color: #a2336c;
-      font-size: 0.95rem;
-      margin-bottom: 8px;
-      letter-spacing: 2px;
-    }
+.signature{
+margin-top:10px;
+text-align:right;
+color:#c2185b;
+font-weight:bold;
+opacity:0;
+transition:1s;
+}
 
-    .title {
-      text-align: center;
-      color: #c21f71;
-      font-size: 2rem;
-      margin-bottom: 12px;
-    }
+.btn{
+position:absolute;
+bottom:-60px;
+left:50%;
+transform:translateX(-50%);
+background:#ff4fa3;
+color:white;
+border:none;
+padding:12px 25px;
+border-radius:30px;
+cursor:pointer;
+}
 
-    .photo-frame {
-      width: 100%;
-      height: 190px;
-      border-radius: 18px;
-      overflow: hidden;
-      position: relative;
-      margin-bottom: 14px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.16);
-      border: 3px solid rgba(255,255,255,0.8);
-    }
+.open .flap{transform:rotateX(180deg);}
+.open .seal{opacity:0;}
+.open .letter{top:-240px;opacity:1;}
+.open .signature{opacity:1;}
 
-    .photo-frame img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transform: scale(1.03);
-    }
-
-    .counter-box {
-      margin: 10px 0 14px;
-      padding: 12px;
-      border-radius: 16px;
-      background: linear-gradient(145deg, rgba(255, 228, 240, 0.95), rgba(255, 245, 249, 0.92));
-      text-align: center;
-      color: #8c2e5c;
-    }
-
-    .counter-label {
-      font-size: 0.9rem;
-      margin-bottom: 5px;
-      font-weight: bold;
-    }
-
-    .counter {
-      font-size: 1rem;
-      line-height: 1.5;
-    }
-
-    .typed-text {
-      min-height: 230px;
-      color: var(--text);
-      font-size: 1rem;
-      line-height: 1.75;
-      text-align: justify;
-      white-space: pre-wrap;
-    }
-
-    .cursor {
-      display: inline-block;
-      width: 8px;
-      animation: blink 0.8s infinite;
-      color: #c21f71;
-      font-weight: bold;
-    }
-
-    @keyframes blink {
-      0%, 49% { opacity: 1; }
-      50%, 100% { opacity: 0; }
-    }
-
-    .signature {
-      margin-top: 16px;
-      text-align: right;
-      color: #c21f71;
-      font-size: 1.15rem;
-      font-weight: bold;
-      opacity: 0;
-      transform: translateY(10px);
-      transition: 0.8s ease 0.4s;
-    }
-
-    .controls {
-      position: absolute;
-      width: 100%;
-      bottom: -84px;
-      display: flex;
-      justify-content: center;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-
-    .btn {
-      border: none;
-      border-radius: 999px;
-      padding: 12px 22px;
-      font-size: 0.98rem;
-      cursor: pointer;
-      font-weight: bold;
-      box-shadow: 0 8px 18px rgba(0,0,0,0.22);
-    }
-
-    .btn-main {
-      background: linear-gradient(145deg, #ff5aa9, #ff7dbd);
-      color: white;
-    }
-
-    .btn-love {
-      background: linear-gradient(145deg, #fff1f7, #ffd6e9);
-      color: #c71d74;
-    }
-
-    .open .flap {
-      transform: rotateX(180deg);
-    }
-
-    .open .seal {
-      opacity: 0;
-      transform: translateX(-50%) scale(0.4);
-    }
-
-    .open .letter {
-      top: -245px;
-      opacity: 1;
-      transform: translateX(-50%) translateY(-5px);
-      z-index: 10;
-    }
-
-    .open .signature {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .fullscreen-btn {
-      position: absolute;
-      top: 16px;
-      right: 16px;
-      z-index: 20;
-      border: none;
-      background: rgba(255,255,255,0.15);
-      color: white;
-      padding: 10px 14px;
-      border-radius: 999px;
-      cursor: pointer;
-      backdrop-filter: blur(8px);
-    }
-
-    @media (max-width: 480px) {
-      .wrapper { width: 320px; height: 220px; }
-      .letter { width: 290px; height: 500px; }
-      .title { font-size: 1.7rem; }
-      .typed-text { font-size: 0.95rem; }
-      .controls { bottom: -100px; }
-    }
-  </style>
+</style>
 </head>
+
 <body>
-  <div class="stars" id="stars"></div>
-  <div class="hearts-bg" id="heartsBg"></div>
 
-  <button class="fullscreen-btn" id="fullscreenBtn">Pantalla completa ✨</button>
+<div class="intro" id="intro">
+<h1>Amy… tengo algo importante para ti ❤️</h1>
+</div>
 
-  <div class="scene">
-    <div class="wrapper" id="wrapper">
-      <div class="envelope">
-        <div class="flap"></div>
-        <div class="seal">💖</div>
+<div class="stars" id="stars"></div>
 
-        <div class="letter">
-          <div class="letter-content">
-            <div class="mini-title">UNA CARTA PARA TI</div>
-            <h1 class="title">Amy ❤️</h1>
+<div class="scene">
+<div class="wrapper" id="wrap">
 
-            <div class="photo-frame">
-              <img src="foto.jpg" alt="Nuestra foto">
-            </div>
+<div class="envelope">
+<div class="flap"></div>
+<div class="seal">💌</div>
 
-            <div class="counter-box">
-              <div class="counter-label">Tiempo desde nuestro inicio ✨</div>
-              <div class="counter" id="counter">Calculando...</div>
-            </div>
+<div class="letter">
+<h2 class="title">Para Amy ❤️</h2>
 
-            <div class="typed-text" id="typedText"></div>
-            <div class="signature" id="signature">Con mucho amor, tu chico 💌</div>
-          </div>
-        </div>
+<div class="photo">
+<img src="foto.jpg">
+</div>
 
-        <div class="hint">Toca para abrir tu carta</div>
-      </div>
+<div class="counter" id="counter"></div>
 
-      <div class="controls">
-        <button class="btn btn-main" id="openBtn">Abrir carta</button>
-        <button class="btn btn-love" id="loveBtn">Más corazones 💕</button>
-      </div>
-    </div>
-  </div>
+<div class="text" id="text"></div>
 
-  <audio id="bgMusic" loop>
-    <source src="musica.mp3" type="audio/mpeg">
-  </audio>
+<div class="signature" id="sign">
+Con amor, tu chico 💘
+</div>
 
-  <script>
-    const wrapper = document.getElementById("wrapper");
-    const openBtn = document.getElementById("openBtn");
-    const loveBtn = document.getElementById("loveBtn");
-    const typedText = document.getElementById("typedText");
-    const signature = document.getElementById("signature");
-    const bgMusic = document.getElementById("bgMusic");
-    const counter = document.getElementById("counter");
-    const fullscreenBtn = document.getElementById("fullscreenBtn");
+</div>
 
-    let isOpen = false;
-    let isTyping = false;
-    let hasTyped = false;
+<button class="btn" id="btn">Abrir carta</button>
 
-    const message = `Mi amor,
+</div>
+</div>
+</div>
 
-Quise hacerte esta carta de una forma distinta, porque tú mereces detalles que se sientan bonitos, sinceros y hechos con el corazón.
+<script>
+/* intro */
+setTimeout(()=>{
+document.getElementById("intro").classList.add("hide")
+},4000)
 
-Desde que llegaste a mi vida, algo en mí cambió. Me haces sentir paz, alegría, ternura, y esa sensación tan linda de querer quedarme contigo en cada momento bonito que compartimos.
+/* estrellas */
+for(let i=0;i<60;i++){
+let s=document.createElement("div")
+s.className="star"
+s.style.left=Math.random()*100+"vw"
+s.style.top=Math.random()*100+"vh"
+s.style.animationDelay=Math.random()*3+"s"
+document.getElementById("stars").appendChild(s)
+}
 
-Quiero que sepas que te quiero muchísimo, Amy. Y no solo por lo hermosa que eres, sino por todo lo que transmites, por tu forma de hacerme sentir, por tu dulzura y por esa manera tan tuya de volver especiales hasta los instantes más simples.
+/* contador fecha REAL */
+const startDate=new Date("2026-01-13T00:00:00")
 
-También quiero decirte algo muy en serio: cada día voy a esforzarme por mejorar como persona, por crecer, por madurar y por convertirme en un mejor hombre para ti. No quiero quererte solo con palabras bonitas, quiero demostrártelo con hechos, con respeto, con lealtad, con cariño y con un amor real.
+function updateCounter(){
+let now=new Date()
+let diff=now-startDate
 
-No prometo ser perfecto, pero sí prometo intentarlo cada día. Prometo aprender, corregirme, cuidar de lo nuestro y hacer todo lo posible por darte la tranquilidad y el amor que mereces.
+let d=Math.floor(diff/86400000)
+let h=Math.floor(diff/3600000)%24
+let m=Math.floor(diff/60000)%60
+let s=Math.floor(diff/1000)%60
 
-Gracias por existir, por ser tú, por llegar a mi vida y hacerla sentir más bonita.
+document.getElementById("counter").innerHTML=
+`${d} días ${h}h ${m}m ${s}s juntos ❤️`
+}
+setInterval(updateCounter,1000)
+updateCounter()
 
-Te quiero muchísimo, Amy. ❤️`;
+/* carta */
+let wrap=document.getElementById("wrap")
+let btn=document.getElementById("btn")
 
-    function createStars() {
-      const starsContainer = document.getElementById("stars");
-      for (let i = 0; i < 70; i++) {
-        const star = document.createElement("div");
-        star.className = "star";
-        star.style.left = Math.random() * 100 + "vw";
-        star.style.top = Math.random() * 100 + "vh";
-        star.style.animationDelay = (Math.random() * 3) + "s";
-        const size = Math.random() * 2 + 1;
-        star.style.width = size + "px";
-        star.style.height = size + "px";
-        starsContainer.appendChild(star);
-      }
-    }
+btn.onclick=()=>{
+wrap.classList.toggle("open")
+}
 
-    function createHeartBurst(amount = 20) {
-      const heartsBg = document.getElementById("heartsBg");
-      for (let i = 0; i < amount; i++) {
-        const heart = document.createElement("div");
-        heart.className = "heart-float";
-        heart.style.left = Math.random() * 100 + "vw";
-        heart.style.animationDuration = (4 + Math.random() * 5) + "s";
-        heart.style.opacity = 0.2 + Math.random() * 0.7;
-        heartsBg.appendChild(heart);
-        setTimeout(() => heart.remove(), 9500);
-      }
-    }
+/* texto que se escribe */
+let msg=`Amy…
 
-    function typeWriter(text, element, speed = 24) {
-      if (isTyping) return;
-      isTyping = true;
-      element.innerHTML = "";
-      let i = 0;
-      const cursor = '<span class="cursor">|</span>';
+Quise hacerte esta carta diferente, porque tú mereces detalles únicos, sinceros y que nazcan del corazón.
 
-      function write() {
-        if (i < text.length) {
-          const safeText = text
-            .slice(0, i + 1)
-            .replace(/&/g, "&amp;")
-            .replace(/</g, "&lt;")
-            .replace(/>/g, "&gt;")
-            .replace(/\n/g, "<br>");
-          element.innerHTML = safeText + cursor;
-          i++;
-          setTimeout(write, speed);
-        } else {
-          element.innerHTML = text
-            .replace(/&/g, "&amp;")
-            .replace(/</g, "&lt;")
-            .replace(/>/g, "&gt;")
-            .replace(/\n/g, "<br>");
-          isTyping = false;
-          hasTyped = true;
-          signature.style.opacity = "1";
-          signature.style.transform = "translateY(0)";
-        }
-      }
-      write();
-    }
+Desde que llegaste a mi vida todo cambió de una forma bonita. Me haces sentir paz, alegría, ternura y esa sensación tan linda de querer quedarme contigo en cada momento.
 
-    function updateCounter() {
-      const startDate = new Date("2026-02-13T00:00:00");
+Quiero que sepas que te quiero muchísimo. No solo por lo hermosa que eres, sino por la forma en que me haces sentir y por la persona tan especial que eres.
 
-      function render() {
-        const now = new Date();
-        let diff = now - startDate;
+También quiero decirte algo muy importante: cada día voy a esforzarme por ser mejor, por crecer, por madurar y por convertirme en el hombre que tú mereces.
 
-        if (diff < 0) {
-          counter.textContent = "Aún no llega esa fecha ❤️";
-          return;
-        }
+No prometo ser perfecto, pero sí prometo intentarlo siempre. Prometo cuidarte, respetarte, apoyarte y quererte de una forma real.
 
-        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-        const minutes = Math.floor((diff / (1000 * 60)) % 60);
-        const seconds = Math.floor((diff / 1000) % 60);
+Gracias por existir Amy ❤️`
 
-        counter.innerHTML = `${days} días, ${hours} horas<br>${minutes} minutos y ${seconds} segundos`;
-      }
+let i=0
+function escribir(){
+if(i<msg.length){
+document.getElementById("text").innerHTML+=msg.charAt(i)
+i++
+setTimeout(escribir,25)
+}else{
+document.getElementById("sign").style.opacity=1
+}
+}
 
-      render();
-      setInterval(render, 1000);
-    }
+setTimeout(escribir,7000)
 
-    async function tryPlayMusic() {
-      try {
-        bgMusic.volume = 0.65;
-        await bgMusic.play();
-      } catch (e) {
-        console.log("No se pudo reproducir la música automáticamente.");
-      }
-    }
+</script>
 
-    function openLetter() {
-      wrapper.classList.add("open");
-      openBtn.textContent = "Cerrar carta";
-      isOpen = true;
-      createHeartBurst(24);
-      tryPlayMusic();
-
-      if (!hasTyped) {
-        setTimeout(() => typeWriter(message, typedText, 24), 900);
-      }
-    }
-
-    function closeLetter() {
-      wrapper.classList.remove("open");
-      openBtn.textContent = "Abrir carta";
-      isOpen = false;
-      bgMusic.pause();
-      bgMusic.currentTime = 0;
-    }
-
-    openBtn.addEventListener("click", () => {
-      if (!isOpen) openLetter();
-      else closeLetter();
-    });
-
-    loveBtn.addEventListener("click", () => createHeartBurst(40));
-
-    wrapper.addEventListener("click", (e) => {
-      if (e.target.closest("button")) return;
-      if (!isOpen) openLetter();
-    });
-
-    fullscreenBtn.addEventListener("click", async () => {
-      if (!document.fullscreenElement) {
-        await document.documentElement.requestFullscreen().catch(() => {});
-      } else {
-        await document.exitFullscreen().catch(() => {});
-      }
-    });
-
-    createStars();
-    updateCounter();
-    setInterval(() => createHeartBurst(3), 2400);
-  </script>
 </body>
 </html>
