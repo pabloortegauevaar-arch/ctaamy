@@ -1,305 +1,409 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Para Amy ❤️</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Para Amy ❤️</title>
 
-<style>
-*{margin:0;padding:0;box-sizing:border-box;}
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Georgia, serif;
+    }
 
-body{
-height:100vh;
-overflow:hidden;
-display:flex;
-justify-content:center;
-align-items:center;
-font-family:Georgia,serif;
-background:radial-gradient(circle at top,#111 0%,#000 70%);
-}
+    body {
+      min-height: 100vh;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: radial-gradient(circle at top, #111 0%, #000 70%);
+      position: relative;
+    }
 
-/* intro */
-.intro{
-position:absolute;
-inset:0;
-background:black;
-display:flex;
-justify-content:center;
-align-items:center;
-z-index:999;
-transition:1s;
-}
+    .intro {
+      position: absolute;
+      inset: 0;
+      background: black;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+      transition: 1s;
+    }
 
-.intro h1{
-color:white;
-font-size:38px;
-opacity:0;
-animation:fade 2s forwards;
-text-align:center;
-}
+    .intro h1 {
+      color: white;
+      font-size: clamp(2rem, 4vw, 3rem);
+      opacity: 0;
+      animation: fade 2s forwards;
+      text-align: center;
+      padding: 20px;
+    }
 
-@keyframes fade{to{opacity:1}}
-.intro.hide{opacity:0;pointer-events:none}
+    @keyframes fade {
+      to { opacity: 1; }
+    }
 
-/* estrellas */
-.star{
-position:absolute;
-width:2px;height:2px;
-background:white;
-border-radius:50%;
-animation:twinkle 3s infinite;
-}
-@keyframes twinkle{
-0%,100%{opacity:.2}
-50%{opacity:1}
-}
+    .intro.hide {
+      opacity: 0;
+      pointer-events: none;
+    }
 
-/* escena */
-.scene{
-position:absolute;
-top:50%;left:50%;
-transform:translate(-50%,-50%);
-perspective:1600px;
-}
+    .star {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: white;
+      border-radius: 50%;
+      animation: twinkle 3s infinite ease-in-out;
+    }
 
-/* SOBRE GRANDE */
-.wrapper{
-width:520px;
-height:360px;
-position:relative;
-}
+    @keyframes twinkle {
+      0%,100% { opacity: .2; transform: scale(.8); }
+      50% { opacity: 1; transform: scale(1.4); }
+    }
 
-.envelope{
-position:absolute;
-inset:0;
-background:linear-gradient(145deg,#ffd6e9,#f7b7d3);
-border-radius:30px;
-box-shadow:0 40px 80px rgba(0,0,0,.6);
-}
+    .scene {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      perspective: 1800px;
+    }
 
-.flap{
-position:absolute;
-width:100%;
-height:200px;
-background:#e9a9c9;
-clip-path:polygon(0 0,50% 100%,100% 0);
-transform-origin:top;
-transition:1.2s;
-z-index:5;
-}
+    .wrapper {
+      width: 680px;
+      height: 470px;
+      position: relative;
+    }
 
-.seal{
-position:absolute;
-left:50%;
-top:140px;
-transform:translateX(-50%);
-width:90px;height:90px;
-border-radius:50%;
-background:#ff4fa3;
-display:flex;
-justify-content:center;
-align-items:center;
-color:white;
-font-size:36px;
-z-index:6;
-transition:.6s;
-}
+    .envelope {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(145deg, #ffd6e9, #f1b8d4);
+      border-radius: 34px;
+      box-shadow: 0 35px 80px rgba(0, 0, 0, 0.55);
+      z-index: 2;
+    }
 
-/* CARTA */
-.letter{
-position:absolute;
-width:460px;
-height:700px;
-background:white;
-border-radius:30px;
-left:50%;
-top:60px;
-transform:translateX(-50%);
-padding:28px;
-box-shadow:0 30px 60px rgba(0,0,0,.4);
-opacity:0;
-transition:1.3s;
-overflow:auto;
-z-index:1;
-}
+    .flap {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 255px;
+      background: #dda2c2;
+      clip-path: polygon(0 0, 50% 100%, 100% 0);
+      transform-origin: top;
+      transition: transform 1.2s ease;
+      z-index: 6;
+    }
 
-/* FOTO */
-.photo{
-width:100%;
-height:280px;
-border-radius:25px;
-overflow:hidden;
-margin-bottom:18px;
-}
-.photo img{
-width:100%;
-height:100%;
-object-fit:cover;
-object-position:center top;
-}
+    .seal {
+      position: absolute;
+      left: 50%;
+      top: 175px;
+      transform: translateX(-50%);
+      width: 95px;
+      height: 95px;
+      border-radius: 50%;
+      background: linear-gradient(145deg, #ff67b2, #ff3a96);
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 38px;
+      z-index: 7;
+      box-shadow: 0 10px 24px rgba(0,0,0,.25);
+      transition: .5s;
+    }
 
-/* texto */
-.title{
-text-align:center;
-color:#c2185b;
-font-size:32px;
-margin-bottom:12px;
-}
+    .letter {
+      position: absolute;
+      left: 50%;
+      top: 95px;
+      transform: translateX(-50%);
+      width: 560px;
+      height: 620px;
+      background: rgba(255,255,255,.98);
+      border-radius: 30px;
+      padding: 26px;
+      box-shadow: 0 25px 55px rgba(0,0,0,.35);
+      overflow-y: auto;
+      opacity: 0;
+      transition: top 1.25s ease, opacity 1.25s ease;
+      z-index: 1;
+      scrollbar-width: thin;
+      scrollbar-color: #df8fb6 transparent;
+    }
 
-.counter{
-background:#ffe3f1;
-padding:14px;
-border-radius:18px;
-text-align:center;
-margin-bottom:18px;
-color:#7a2d52;
-font-weight:bold;
-font-size:20px;
-}
+    .letter::-webkit-scrollbar {
+      width: 8px;
+    }
 
-.text{
-line-height:1.9;
-color:#4b2d38;
-text-align:justify;
-font-size:18px;
-}
+    .letter::-webkit-scrollbar-thumb {
+      background: #df8fb6;
+      border-radius: 999px;
+    }
 
-.signature{
-margin-top:15px;
-text-align:right;
-color:#c2185b;
-font-weight:bold;
-opacity:0;
-transition:1s;
-font-size:20px;
-}
+    .title {
+      text-align: center;
+      color: #c81e69;
+      font-size: 2.5rem;
+      margin-bottom: 18px;
+    }
 
-.btn{
-position:absolute;
-bottom:-90px;
-left:50%;
-transform:translateX(-50%);
-background:#ff4fa3;
-color:white;
-border:none;
-padding:18px 45px;
-border-radius:50px;
-font-size:20px;
-cursor:pointer;
-box-shadow:0 15px 30px rgba(0,0,0,.5);
-}
+    .photo {
+      width: 100%;
+      height: 280px;
+      border-radius: 24px;
+      overflow: hidden;
+      margin-bottom: 18px;
+      box-shadow: 0 10px 25px rgba(0,0,0,.15);
+      background: #f3f3f3;
+    }
 
-/* animacion */
-.open .flap{transform:rotateX(180deg);}
-.open .seal{opacity:0;transform:translateX(-50%) scale(.5);}
-.open .letter{top:-240px;opacity:1;z-index:10;}
-.open .signature{opacity:1;}
+    .photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center center;
+      display: block;
+    }
 
-</style>
+    .counter {
+      background: #ffe3f1;
+      padding: 16px;
+      border-radius: 18px;
+      text-align: center;
+      margin-bottom: 18px;
+      color: #7a2d52;
+      font-weight: bold;
+      font-size: 1.5rem;
+      line-height: 1.4;
+    }
+
+    .text {
+      line-height: 1.8;
+      color: #4b2d38;
+      text-align: justify;
+      font-size: 1.2rem;
+      white-space: pre-wrap;
+      min-height: 220px;
+    }
+
+    .signature {
+      margin-top: 18px;
+      text-align: right;
+      color: #c81e69;
+      font-size: 1.2rem;
+      font-weight: bold;
+      opacity: 0;
+      transition: 1s;
+    }
+
+    .btn {
+      position: absolute;
+      bottom: -95px;
+      left: 50%;
+      transform: translateX(-50%);
+      border: none;
+      background: linear-gradient(145deg, #ff58aa, #ff3b98);
+      color: white;
+      padding: 18px 48px;
+      border-radius: 999px;
+      font-size: 1.3rem;
+      cursor: pointer;
+      box-shadow: 0 14px 30px rgba(0,0,0,.35);
+      z-index: 20;
+    }
+
+    .btn:hover {
+      transform: translateX(-50%) scale(1.04);
+    }
+
+    .open .flap {
+      transform: rotateX(180deg);
+    }
+
+    .open .seal {
+      opacity: 0;
+      transform: translateX(-50%) scale(.55);
+    }
+
+    .open .letter {
+      top: -70px;
+      opacity: 1;
+      z-index: 10;
+    }
+
+    .open .signature {
+      opacity: 1;
+    }
+
+    @media (max-width: 768px) {
+      .wrapper {
+        width: 370px;
+        height: 260px;
+      }
+
+      .flap {
+        height: 140px;
+      }
+
+      .seal {
+        top: 92px;
+        width: 68px;
+        height: 68px;
+        font-size: 28px;
+      }
+
+      .letter {
+        width: 320px;
+        height: 500px;
+        top: 55px;
+        padding: 18px;
+      }
+
+      .open .letter {
+        top: -105px;
+      }
+
+      .title {
+        font-size: 1.8rem;
+      }
+
+      .photo {
+        height: 185px;
+        border-radius: 18px;
+      }
+
+      .counter {
+        font-size: 1rem;
+        padding: 12px;
+      }
+
+      .text {
+        font-size: 1rem;
+      }
+
+      .btn {
+        bottom: -78px;
+        font-size: 1rem;
+        padding: 14px 30px;
+      }
+    }
+  </style>
 </head>
-
 <body>
 
-<div class="intro" id="intro">
-<h1>Amy… tengo algo importante para ti ❤️</h1>
-</div>
+  <div class="intro" id="intro">
+    <h1>Amy… tengo algo importante para ti ❤️</h1>
+  </div>
 
-<div class="scene">
-<div class="wrapper" id="wrap">
+  <div class="scene">
+    <div class="wrapper" id="wrap">
+      <div class="envelope">
+        <div class="flap"></div>
+        <div class="seal">💌</div>
 
-<div class="envelope">
-<div class="flap"></div>
-<div class="seal">💌</div>
+        <div class="letter">
+          <h2 class="title">Para Amy ❤️</h2>
 
-<div class="letter">
-<h2 class="title">Para Amy ❤️</h2>
+          <div class="photo">
+            <img src="foto.jpeg" alt="Nuestra foto">
+          </div>
 
-<div class="photo">
-<img src="foto.jpeg">
-</div>
+          <div class="counter" id="counter"></div>
 
-<div class="counter" id="counter"></div>
+          <div class="text" id="text"></div>
 
-<div class="text" id="text"></div>
+          <div class="signature" id="sign">Con amor, tu chico 💘</div>
+        </div>
+      </div>
 
-<div class="signature" id="sign">
-Con amor, tu chico 💘
-</div>
-</div>
+      <button class="btn" id="btn">Abrir carta</button>
+    </div>
+  </div>
 
-<button class="btn" id="btn">Abrir carta</button>
+  <script>
+    setTimeout(() => {
+      document.getElementById("intro").classList.add("hide");
+    }, 3500);
 
-</div>
-</div>
+    for (let i = 0; i < 90; i++) {
+      let s = document.createElement("div");
+      s.className = "star";
+      s.style.left = Math.random() * 100 + "vw";
+      s.style.top = Math.random() * 100 + "vh";
+      s.style.animationDelay = Math.random() * 3 + "s";
+      const size = Math.random() * 2 + 1;
+      s.style.width = size + "px";
+      s.style.height = size + "px";
+      document.body.appendChild(s);
+    }
 
-<script>
-setTimeout(()=>{
-document.getElementById("intro").classList.add("hide")
-},3500)
+    const startDate = new Date("2026-01-13T00:00:00");
 
-/* estrellas */
-for(let i=0;i<70;i++){
-let s=document.createElement("div")
-s.className="star"
-s.style.left=Math.random()*100+"vw"
-s.style.top=Math.random()*100+"vh"
-s.style.animationDelay=Math.random()*3+"s"
-document.body.appendChild(s)
-}
+    function updateCounter() {
+      const now = new Date();
+      const diff = now - startDate;
 
-/* contador */
-const startDate=new Date("2026-01-13T00:00:00")
+      const d = Math.floor(diff / 86400000);
+      const h = Math.floor(diff / 3600000) % 24;
+      const m = Math.floor(diff / 60000) % 60;
+      const s = Math.floor(diff / 1000) % 60;
 
-function updateCounter(){
-let now=new Date()
-let diff=now-startDate
+      document.getElementById("counter").innerHTML =
+        `${d} días ${h}h ${m}m ${s}s juntos ❤️`;
+    }
 
-let d=Math.floor(diff/86400000)
-let h=Math.floor(diff/3600000)%24
-let m=Math.floor(diff/60000)%60
-let s=Math.floor(diff/1000)%60
+    setInterval(updateCounter, 1000);
+    updateCounter();
 
-document.getElementById("counter").innerHTML=
-`${d} días ${h}h ${m}m ${s}s juntos ❤️`
-}
-setInterval(updateCounter,1000)
-updateCounter()
+    const wrap = document.getElementById("wrap");
+    const btn = document.getElementById("btn");
 
-/* carta */
-let wrap=document.getElementById("wrap")
-let btn=document.getElementById("btn")
+    btn.onclick = () => {
+      wrap.classList.toggle("open");
+      btn.textContent = wrap.classList.contains("open") ? "Cerrar carta" : "Abrir carta";
 
-btn.onclick=()=>{
-wrap.classList.toggle("open")
-btn.innerText=wrap.classList.contains("open")?"Cerrar carta":"Abrir carta"
-}
+      if (!startedTyping) {
+        startedTyping = true;
+        setTimeout(escribir, 700);
+      }
+    };
 
-/* texto */
-let msg=`Amy…
+    const msg = `Amy…
 
-Quise hacerte esta carta diferente, porque tú mereces detalles únicos y sinceros.
+Quise hacerte esta carta diferente, porque tú mereces detalles únicos, sinceros y que nazcan del corazón.
 
-Desde que llegaste a mi vida todo cambió de una forma bonita.
-Me haces sentir paz, alegría y esa sensación tan linda de querer quedarme contigo.
+Desde que llegaste a mi vida todo cambió de una forma bonita. Me haces sentir paz, alegría, ternura y esa sensación tan linda de querer quedarme contigo en cada momento.
 
-Quiero esforzarme cada día por ser mejor hombre para ti.
-Prometo cuidarte, respetarte y quererte de verdad.
+Quiero que sepas que te quiero muchísimo. No solo por lo hermosa que eres, sino por la forma en que me haces sentir y por la persona tan especial que eres.
 
-Gracias por existir Amy ❤️`
+También quiero decirte algo muy importante: cada día voy a esforzarme por ser mejor, por crecer, por madurar y por convertirme en el hombre que tú mereces.
 
-let i=0
-function escribir(){
-if(i<msg.length){
-document.getElementById("text").innerHTML+=msg.charAt(i)
-i++
-setTimeout(escribir,25)
-}else{
-document.getElementById("sign").style.opacity=1
-}
-}
-setTimeout(escribir,6000)
+No prometo ser perfecto, pero sí prometo intentarlo siempre. Prometo cuidarte, respetarte, apoyarte y quererte de una forma real.
 
-</script>
+Gracias por existir, Amy ❤️`;
+
+    let i = 0;
+    let startedTyping = false;
+
+    function escribir() {
+      if (i < msg.length) {
+        document.getElementById("text").textContent += msg.charAt(i);
+        i++;
+        setTimeout(escribir, 24);
+      } else {
+        document.getElementById("sign").style.opacity = 1;
+      }
+    }
+  </script>
 
 </body>
 </html>
